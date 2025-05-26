@@ -44,3 +44,12 @@ td[title]:hover {
   background-color: #fde68a;
   cursor: help;
 }
+
+.error {
+  color: red;
+  background-color: #ffe6e6;
+  padding: 1rem;
+  border: 1px solid red;
+  border-radius: 6px;
+  font-weight: bold;
+}

@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     return date.toLocaleDateString();
   }
 
+  function renderError(message) {
+    container.innerHTML = `<div class="error">Ошибка: ${message}</div>`;
+  }
+
   function renderTickets(tickets) {
     const table = document.createElement("table");
     const thead = document.createElement("thead");
@@ -56,6 +60,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     container.appendChild(table);
   }
 
-  const tickets = await fetchOpenTickets();
-  renderTickets(tickets);
+  try {
+    const tickets = await fetchOpenTickets();
+
+    if (!Array.isArray(tickets)) {
+      throw new Error("Неверный формат данных от сервера");
+    }
+
+    renderTickets(tickets);
+  } catch (error) {
+    console.error("Ошибка при загрузке тикетов:", error);
+    renderError(error.message || "Неизвестная ошибка при загрузке данных");
+  }
 });

@@ -1,58 +1,60 @@
 async function fetchOpenTickets() {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    // Искусственная задержка для эмуляции запроса
     setTimeout(() => {
-      resolve([
+      // Вероятность ошибки — 10%
+      const shouldFail = Math.random() < 0.1;
+
+      if (shouldFail) {
+        reject(new Error("Сервер недоступен. Перезагрузите страницу."));
+        return;
+      }
+
+      // Моковые данные
+      const tickets = [
         {
-          number: "INC001",
+          number: "ITSM-1001",
           status: "Открыта",
-          created_at: "2024-12-30T09:00:00Z",
+          created_at: "2025-02-10T10:15:00Z",
         },
         {
-          number: "INC002",
-          status: "В работе",
-          created_at: "2025-01-03T14:20:00Z",
-        },
-        {
-          number: "INC003",
-          status: "Ожидает ответа",
-          created_at: "2025-02-15T08:15:00Z",
-        },
-        {
-          number: "INC004",
+          number: "ITSM-1002",
           status: "Открыта",
-          created_at: "2024-11-12T11:30:00Z",
+          created_at: "2024-12-20T08:30:00Z",
         },
         {
-          number: "INC005",
+          number: "ITSM-1003",
+          status: "Ожидает информации",
+          created_at: "2025-01-05T14:45:00Z",
+        },
+        {
+          number: "ITSM-1004",
+          status: "На проверке",
+          created_at: "2023-11-11T09:20:00Z",
+        },
+        {
+          number: "ITSM-1005",
           status: "Открыта",
-          created_at: "2025-03-01T17:45:00Z",
+          created_at: "2025-03-01T16:00:00Z",
         },
         {
-          number: "INC006",
-          status: "Решена",
-          created_at: "2023-06-18T13:10:00Z",
-        },
-        {
-          number: "INC007",
+          number: "ITSM-1006",
           status: "Открыта",
-          created_at: "2025-01-10T10:10:00Z",
+          created_at: "2024-05-14T13:10:00Z",
         },
         {
-          number: "INC008",
-          status: "В работе",
-          created_at: "2024-10-01T07:25:00Z",
+          number: "ITSM-1007",
+          status: "Назначена",
+          created_at: "2025-01-20T10:00:00Z",
         },
         {
-          number: "INC009",
-          status: "Ожидает ответа",
-          created_at: "2025-05-15T12:00:00Z",
-        },
-        {
-          number: "INC010",
+          number: "ITSM-1008",
           status: "Открыта",
-          created_at: "2025-01-01T00:01:00Z",
+          created_at: "2023-08-10T07:30:00Z",
         },
-      ]);
-    }, 500);
+      ];
+
+      resolve(tickets);
+    }, 1000);
   });
 }
