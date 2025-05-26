@@ -33,3 +33,14 @@ th {
   font-weight: 500;
   transition: background-color 0.3s;
 }
+
+.tooltip {
+  cursor: help;
+  color: #d97706; /* amber */
+  font-size: 0.9em;
+}
+
+td[title]:hover {
+  background-color: #fde68a;
+  cursor: help;
+}

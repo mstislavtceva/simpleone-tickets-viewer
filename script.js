@@ -39,6 +39,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (isNew) {
         row.classList.add("new-ticket");
+        dateCell.title = "Создана после 01.01.2025";
+        const icon = document.createElement("span");
+        icon.textContent = " 🕒";
+        dateCell.appendChild(icon);
       }
 
       row.appendChild(numberCell);
