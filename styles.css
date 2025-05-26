@@ -27,3 +27,9 @@ td {
 th {
   background-color: #f0f0f0;
 }
+
+.new-ticket {
+  background-color: #fff3cd;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}

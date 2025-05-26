@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("ticket-container");
+  const DATE_THRESHOLD = new Date("2025-01-01");
 
   function formatDate(isoString) {
     const date = new Date(isoString);
@@ -24,6 +25,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     tickets.forEach((ticket) => {
       const row = document.createElement("tr");
+      const createdDate = new Date(ticket.created_at);
+      const isNew = createdDate > DATE_THRESHOLD;
 
       const numberCell = document.createElement("td");
       numberCell.textContent = ticket.number;
@@ -33,6 +36,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const dateCell = document.createElement("td");
       dateCell.textContent = formatDate(ticket.created_at);
+
+      if (isNew) {
+        row.classList.add("new-ticket");
+      }
 
       row.appendChild(numberCell);
       row.appendChild(statusCell);
